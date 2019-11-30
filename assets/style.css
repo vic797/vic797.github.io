@@ -280,6 +280,13 @@ blockquote {
     .navigation-menu ol {
         left: 25% !important;
     }
+    .only-mobile {
+        display: none !important;
+    }
+}
+
+.only-mobile {
+    display: inline-block;
 }
 
 .navigation-menu ol {

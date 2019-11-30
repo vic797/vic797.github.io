@@ -14,7 +14,7 @@
         <li><a href="https://play.google.com/store/apps/developer?id=Victor+Campos" target="_blank">Android Apps</a></li>
         <li><a href="{{ site.url }}/minecraft">Minecraft Content</a></li>
     </ol>
-    <ul class="icons" style="bottom: 10px;">
+    <ul class="icons only-mobile" style="bottom: 10px;">
         {% for link in site.data.links %}
         <li><a href=" {{link.link }}" target="_blank" data-tooltip="{{ link.name }}" data-tooltip-location="right"><i class="{{ link.icon }}"></i></a></li>
         {% endfor %}

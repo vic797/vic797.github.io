@@ -1,0 +1,17 @@
+<div class="navigation">
+    <ul class="icons">
+        <li><a href="#" id="toggle-menu" data-tooltip="Menu (M)"><i class="fas fa-bars"></i></a></li>
+        {% for link in site.data.links %}
+        <li><a href=" {{link.link }}" target="_blank" data-tooltip="{{ link.name }}" data-tooltip-location="right"><i class="{{ link.icon }}"></i></a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="navigation-menu" data-visible="false">
+    <ol>
+        <li>Menu</li>
+        <li><a href="{{ site.url }}">Home</a></li>
+        <li><a href="{{ site.url }}/programs">Programs</a></li>
+        <li><a href="https://play.google.com/store/apps/developer?id=Victor+Campos" target="_blank">Android Apps</a></li>
+        <li><a href="{{ site.url }}/minecraft">Minecraft Content</a></li>
+    </ol>
+</div>

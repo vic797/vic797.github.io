@@ -1,0 +1,310 @@
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+code,
+pre {
+    font-family: 'Inconsolata', monospace;
+}
+
+code:not(.hljs) {
+    color: #b5024f;
+}
+
+hr {
+    border-top: 1px solid gainsboro;
+    border-bottom: none;
+}
+
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border-bottom: 1px solid white;
+    border-right: none;
+    height: 50px;
+}
+
+.content {
+    width: calc(100% - 20px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 60px 10px 70px 10px;
+}
+
+a {
+    color: #026db5;
+    text-decoration: none;
+}
+
+.content .content-body a {
+    position: relative;
+}
+
+.content .content-body a::before {
+    content: "";
+    background-color: #026db5;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    display: inline-block;
+    transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+
+.content .content-body a:hover::before {
+    width: 100%;
+    left: 0;
+    transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+
+.navigation-menu {
+    display: none;
+}
+
+.download-btn:hover {
+    color: #e3cb30 !important;
+    transition: color 0.3s ease;
+}
+
+.download-btn {
+    color: #fff !important;
+    background-color: #000;
+    text-decoration: none;
+    padding: 20px;
+    margin-top: 30px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+blockquote {
+    background-color: #f8f8f8;
+    border-left: 3px solid #ababab;
+    padding: 10px;
+}
+
+.pagination {
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.pagination a {
+    background-color: #000;
+    color: #fff !important;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.pagination a.previous {
+    float: left;
+}
+
+.pagination a.next {
+    float: right;
+}
+
+.pagination a:hover {
+    color: #e3cb30 !important;
+    transition: color 0.3s ease;
+}
+
+.tags .tag {
+    background-color: #000;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.tags .tag a {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.tags .tag a:hover {
+    color: #e3cb30 !important;
+    transition: color 0.3s ease;
+}
+
+.tags .tag a::before {
+    content: "#";
+}
+
+.tags .tag+.tag {
+    margin-left: 5px;
+}
+
+.icons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.icons li {
+    display: block;
+    float: left;
+}
+
+.icons li a {
+    color: #fff;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+}
+
+.post-list,
+.category-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li,
+.category-list li {
+    border-top: 1px solid black;
+}
+
+.post-list li>a {
+    width: calc(100% - 10px);
+    position: relative;
+    padding: 10px 5px;
+    display: inline-block;
+    color: #000 !important;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.post-list li>a:hover {
+    color: #fff !important;
+    background-color: #000;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.post-list li:last-of-type,
+.category-list li:last-of-type {
+    border-bottom: 1px solid black;
+}
+
+@media only screen and (min-width: 768px) {
+    [data-tooltip] {
+        position: relative;
+    }
+    [data-tooltip]::after {
+        float: left;
+        content: attr(data-tooltip);
+        background: #e3cb30;
+        color: #333;
+        left: -200px;
+        font-size: 16px;
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        opacity: 0;
+        transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        white-space: nowrap;
+    }
+    [data-tooltip]:hover::after {
+        left: 50px;
+        opacity: 1;
+        transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    .icons li {
+        display: inline-block;
+    }
+    .content {
+        width: calc(100% - 90px);
+        position: absolute;
+        top: 0;
+        left: 50px;
+        margin: 20px;
+        padding: 0px 0px 70px 0px;
+    }
+    .navigation {
+        width: 50px !important;
+        height: 100%;
+        z-index: 9999;
+        border-right: 1px solid white;
+        border-bottom: none;
+    }
+    .navigation a,
+    .navigation button {
+        color: #fff;
+        font-size: 25px;
+        transition: color 0.3s ease;
+    }
+    .navigation button:focus {
+        outline: 0;
+    }
+    .navigation a:hover,
+    .navigation button:hover {
+        color: #e3cb30;
+        transition: color 0.3s ease;
+    }
+    .navigation-menu ol {
+        font-size: 35px;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translateY(-50%);
+        counter-reset: item;
+        border-left: 3px solid #fff;
+        counter-reset: zero-count -1;
+    }
+    .navigation-menu ol li {
+        color: #fff;
+        list-style: none;
+        margin-left: -20px;
+        counter-increment: zero-count;
+    }
+    .navigation-menu ol li:first-of-type {
+        cursor: none;
+    }
+    .navigation-menu ol li::before {
+        content: counter(zero-count, decimal-leading-zero)" ";
+    }
+    .navigation-menu ol li a {
+        color: #fff;
+        text-decoration: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+        background-image: linear-gradient(to right, #e3cb30, #e3cb30 50%, #fff 50%);
+        background-size: 200% 100%;
+        background-position: 100%;
+        position: relative;
+    }
+    .navigation-menu ol li a:hover {
+        transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+        background-position: 0%;
+    }
+    .navigation-menu {
+        overflow: hidden;
+        padding: 20px;
+        display: inline-block;
+        background-color: #000;
+        position: fixed;
+        width: calc(100% - 91px);
+        height: calc(100% - 40px);
+        top: 0;
+        left: -100%;
+        z-index: 9998;
+    }
+}

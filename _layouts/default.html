@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include head.html %}
+    <meta name="description" content="{{ page.resume }}">
+</head>
+
+<body>
+    {% include menu.html %}
+    <div class="content">
+        <div class="content-body">
+            {{ content }}
+        </div>
+    </div>
+</body>
+
+</html>

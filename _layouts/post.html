@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include head.html %}
+    <meta name="description" content="{{ page.resume }}">
+</head>
+
+<body>
+    {% include menu.html %}
+    <div class="content">
+        <div class="content-body">
+            {{ content }}
+        </div>
+        <div class="tags" style="margin-top: 30px;">
+            {% for tag in page.categories %}
+            <span class="tag"><a href="{{ site.url }}/{{ tag }}">{{ tag }}</a></span> {% endfor %}
+        </div> {% if page.download %}
+        <a href="{{ page.download }}" target="_blank" class="download-btn"><i class="fas fa-download"></i> Download</a> {% endif %} {% if page.repo %}
+        <a href="{{ page.repo }}" target="_blank" class="download-btn"><i class="fab fa-github"></i> Repository</a> {% endif %}
+        <nav class="pagination">
+            {% if page.previous %}
+            <a href="{{ site.url }}{{page.previous.url }}" class="previous"><i class="fas fa-step-backward"></i> {{ page.previous.title }}</a> {% endif %} {% if page.next %}
+            <a href="{{ site.url }}{{page.next.url }}" class="next">{{ page.next.title }} <i class="fas fa-step-forward"></i></a> {% endif %}
+        </nav>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+- name: Twitter
+  icon: "fab fa-twitter"
+  link: https://twitter.com/binary512
+
+- name: Github
+  icon: "fab fa-github"
+  link: https://github.com/vic797
+
+- name: Steam
+  icon: "fab fa-steam"
+  link: https://steamcommunity.com/id/binary1024/
+
+- name: Planet Minecraft
+  icon: "fas fa-globe-americas"
+  link: https://www.planetminecraft.com/member/binary1024/
+
+- name: Instagram
+  icon: "fab fa-instagram"
+  link: https://www.instagram.com/binary1024/
+
+- name: Reddit
+  icon: "fab fa-reddit"
+  link: https://www.reddit.com/user/binary512
+  

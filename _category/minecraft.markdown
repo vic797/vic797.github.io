@@ -1,0 +1,4 @@
+---
+tag: minecraft
+permalink: /minecraft
+---

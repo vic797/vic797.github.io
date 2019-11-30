@@ -1,0 +1,12 @@
+---
+layout: post
+title: "McMake - A Minecraft data pack compiler"
+categories: [minecraft, programs]
+repo: https://github.com/vic797/mcmake
+resume: "MCmake is a command line tool for making data packs that supports variables, conditions and loops. "
+---
+# {{ page.title }}
+
+MCmake is a command line tool for making data packs that supports variables, conditions and loops. 
+
+MCmake is intended to avoid coping entire commands over and over only to change a block id or a number. It first started as a template processor and it evolved to a sort of compiler. MCmake is available for Windows (as installer), MacOS (as stand alone file) and Linux (as a DEB package and stand alone file).

@@ -1,0 +1,71 @@
+---
+layout: post
+title: "1Cat0 - An esoteric programming language"
+categories: [programs]
+repo: https://github.com/vic797/cat-lang
+resume: "1Cat0 is a proof of concept for a functional/imperative programming language that uses Binary Trees"
+---
+# {{ page.title }}
+
+**1Cat0** is a proof of concept for a _functional_/_imperative_ programming language that uses _Binary Trees_ instead of _Abstract Syntax Trees_. The use of _Bynary Trees_ makes the execution of secuential instructions basically imposible since each function only uses one or two arguments. For example this program:
+
+```
+(write "Hello world")
+```
+
+Prints:
+
+```
+Hello world
+```
+
+But if you want to do something more complex like add two numbers and show the full infix operation you have to use an extra command called `then`:
+
+```
+(then
+    (write "6 + 2 = ")
+    (write (+ 6 2))
+)
+```
+
+Prints:
+```
+6 + 2 = 8
+```
+
+The command `then` is the only command that executes two commands no matter the result of either. Also you might notice the use of `(` and `)`; the parenthesis are used as delimiters for the nodes of the binary tree.
+
+## Value types
+
+* **Number:** any `64-bit` `long` value.
+* **Decimal:** any `64-bit` `double` value.
+* **Boolean:** either `true` or `false`.
+* **String:** a regular `string` value.
+* **Array:** an array value (behaves like a `stack`); declared with `@`.
+
+## Functions
+
+**1Cat0** has 26 functions (binary operators are functions) and 4 convertion funtions.
+
+## Example code
+
+```
+(( Get the factorial of a number (!n) ))
+(then
+	(func factorial
+		(else
+			(if (= args 1) (return args))
+			(then
+				(let n (- args 1))
+				(return
+					(* args (call factorial n))
+				)
+			)
+		)
+	)
+	(then
+		(let val (num (read "Type a number: ")))
+		(write (call factorial val))
+	)
+)
+```

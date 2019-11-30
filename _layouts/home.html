@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include head.html %}
+    <meta name="description" content="{{ site.description }}">
+</head>
+
+<body>
+    {% include menu.html %}
+    <div class="content">
+        <div class="content-body">
+            {{ content }}
+            <div class="gcse-search"></div>
+            <hr>
+            <h2>Lastest post</h2>
+            <h3><a href="{{ site.url }}{{ site.posts.first.url }}">{{ site.posts.first.title }}</a></h3>
+            <p>{{ site.posts.first.resume }}</p>
+            <p><a href="{{ site.url }}{{ site.posts.first.url }}">Read more...</a></p>
+        </div>
+        <div class="tags">
+            {% for tag in site.posts.first.categories %}
+            <span class="tag"><a href="{{ site.url }}/{{ tag }}">{{ tag }}</a></span> {% endfor %}
+        </div>
+    </div>
+    <script async src="https://cse.google.com/cse.js?cx=002613643808219101827:9074fxd2unm"></script>
+</body>
+
+</html>

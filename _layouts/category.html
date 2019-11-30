@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include head.html %}
+</head>
+
+<body>
+    {% include menu.html %}
+    <div class="content">
+        <div class="content-body">
+            <h1>Posts tagged as #{{ page.tag }}</h1>
+            <ul class="category-list">
+                {% for post in site.categories[page.tag] %}
+                <li>
+                    <h3><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h3>
+                    <p>{{ post.resume }}</p>
+                    <p><a href="{{ site.url }}{{ post.url }}">Read more...</a></p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

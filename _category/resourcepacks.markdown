@@ -1,0 +1,4 @@
+---
+tag: resourcepacks
+permalink: /resourcepacks
+---

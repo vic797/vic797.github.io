@@ -1,0 +1,4 @@
+---
+tag: datapacks
+permalink: /datapacks
+---

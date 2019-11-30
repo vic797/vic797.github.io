@@ -1,0 +1,21 @@
+---
+layout: post
+title: "LoadJS"
+categories: [programs, libraries]
+repo: https://github.com/vic797/load-js
+resume: "LoadJS is a Javascript library that optimizes the loading process of a website"
+---
+# {{ page.title }}
+
+**LoadJS** is a Javascript library that optimizes the loading process of a website by:
+
+* Putting on queue the images so they load after the document,
+* Improves the hash navigation (`href="#foo"`),
+* Changes the DOM without reloading the website by changing the behavior of `a` tags with the `href` attribute,
+   * `a` tags with the `onclick` attribute can suppress the LoadJS function by calling `LoadJS.preventLoad()` function.
+   * Only `a` tags without the `target` attribute or with `target="_self"` are affected.
+   * `a` tags with `href="#"` don't do anything.
+* Keeps the history between reloads (pressing the `Reload` button or the `F5` key) using LocalStorage if possible,
+   * If using LocalStorage is not possible then LoadJS uses cookies.
+* Loads scripts and stylesheets as needed,
+* Displays a loading screen as needed

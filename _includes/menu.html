@@ -1,8 +1,8 @@
 <div class="navigation">
     <ul class="icons">
-        <li><a href="#" id="toggle-menu" data-tooltip="Menu (M)"><i class="fas fa-bars"></i></a></li>
+        <li data-awlays="true"><a href="#" id="toggle-menu" data-tooltip="Menu (M)"><i class="fas fa-bars"></i></a></li>
         {% for link in site.data.links %}
-        <li><a href=" {{link.link }}" target="_blank" data-tooltip="{{ link.name }}" data-tooltip-location="right"><i class="{{ link.icon }}"></i></a></li>
+        <li data-awlays="false"><a href=" {{link.link }}" target="_blank" data-tooltip="{{ link.name }}" data-tooltip-location="right"><i class="{{ link.icon }}"></i></a></li>
         {% endfor %}
     </ul>
 </div>
@@ -14,4 +14,9 @@
         <li><a href="https://play.google.com/store/apps/developer?id=Victor+Campos" target="_blank">Android Apps</a></li>
         <li><a href="{{ site.url }}/minecraft">Minecraft Content</a></li>
     </ol>
+    <ul class="icons" style="bottom: 10px;">
+        {% for link in site.data.links %}
+        <li><a href=" {{link.link }}" target="_blank" data-tooltip="{{ link.name }}" data-tooltip-location="right"><i class="{{ link.icon }}"></i></a></li>
+        {% endfor %}
+    </ul>
 </div>

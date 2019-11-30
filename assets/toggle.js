@@ -9,9 +9,15 @@ function toggleMenu() {
         $("body").css("overflow", "auto");
         menuVisible = false;
     } else {
-        $(menu).animate({
-            left: '50px'
-        })
+        if ($(window).width() > 768) {
+            $(menu).animate({
+                left: '50px'
+            })
+        } else {
+            $(menu).animate({
+                left: '0px'
+            })
+        }
         $(menu).data("visible", true);
         $("body").css("overflow", "hidden");
         menuVisible = true;

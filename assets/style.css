@@ -32,6 +32,7 @@ hr {
     border-bottom: 1px solid white;
     border-right: none;
     height: 50px;
+    z-index: 9999;
 }
 
 .content {
@@ -67,10 +68,6 @@ a {
     width: 100%;
     left: 0;
     transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
-}
-
-.navigation-menu {
-    display: none;
 }
 
 .download-btn:hover {
@@ -167,6 +164,11 @@ blockquote {
     display: block;
     line-height: 50px;
     text-align: center;
+    display: inline-block;
+}
+
+.icons li[data-awlays="false"] {
+    display: none !important;
 }
 
 .post-list,
@@ -228,6 +230,9 @@ blockquote {
     .icons li {
         display: inline-block;
     }
+    .icons li[data-awlays="false"] {
+        display: inline-block !important;
+    }
     .content {
         width: calc(100% - 90px);
         position: absolute;
@@ -239,7 +244,6 @@ blockquote {
     .navigation {
         width: 50px !important;
         height: 100%;
-        z-index: 9999;
         border-right: 1px solid white;
         border-bottom: none;
     }
@@ -257,54 +261,75 @@ blockquote {
         color: #e3cb30;
         transition: color 0.3s ease;
     }
-    .navigation-menu ol {
-        font-size: 35px;
-        position: absolute;
-        top: 50%;
-        left: 25%;
-        transform: translateY(-50%);
-        counter-reset: item;
-        border-left: 3px solid #fff;
-        counter-reset: zero-count -1;
-    }
-    .navigation-menu ol li {
-        color: #fff;
-        list-style: none;
-        margin-left: -20px;
-        counter-increment: zero-count;
-    }
-    .navigation-menu ol li:first-of-type {
-        cursor: none;
-    }
-    .navigation-menu ol li::before {
-        content: counter(zero-count, decimal-leading-zero)" ";
-    }
-    .navigation-menu ol li a {
-        color: #fff;
-        text-decoration: none;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
-        background-image: linear-gradient(to right, #e3cb30, #e3cb30 50%, #fff 50%);
-        background-size: 200% 100%;
-        background-position: 100%;
-        position: relative;
-    }
     .navigation-menu ol li a:hover {
         transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
         background-position: 0%;
     }
     .navigation-menu {
         overflow: hidden;
-        padding: 20px;
+        padding: 20px !important;
         display: inline-block;
         background-color: #000;
         position: fixed;
-        width: calc(100% - 91px);
-        height: calc(100% - 40px);
+        width: calc(100% - 91px) !important;
+        height: calc(100% - 40px) !important;
         top: 0;
         left: -100%;
         z-index: 9998;
     }
+    .navigation-menu ol {
+        left: 25% !important;
+    }
+}
+
+.navigation-menu ol {
+    font-size: 35px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    counter-reset: item;
+    border-left: 3px solid #fff;
+    counter-reset: zero-count -1;
+}
+
+.navigation-menu ol li {
+    color: #fff;
+    list-style: none;
+    margin-left: -20px;
+    counter-increment: zero-count;
+}
+
+.navigation-menu ol li:first-of-type {
+    cursor: none;
+}
+
+.navigation-menu ol li::before {
+    content: counter(zero-count, decimal-leading-zero)" ";
+}
+
+.navigation-menu ol li a {
+    color: #fff;
+    text-decoration: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+    background-image: linear-gradient(to right, #e3cb30, #e3cb30 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    position: relative;
+}
+
+.navigation-menu {
+    overflow: hidden;
+    display: inline-block;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    padding: 5px;
+    left: -100%;
+    z-index: 9998;
+    width: calc(100% - 10px);
+    height: calc(100% - 40px);
 }

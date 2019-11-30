@@ -6,6 +6,7 @@ url: "https://vic797.github.io"
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 collections:
   category:

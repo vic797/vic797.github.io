@@ -1,7 +1,7 @@
 ---
 title: NBTCrafter, another NBT crafting data pack
 layout: post
-links
+links:
   -
     url: http://www.binary1024.xyz/tools/recipe-generator.html
     label: Recipe Generator

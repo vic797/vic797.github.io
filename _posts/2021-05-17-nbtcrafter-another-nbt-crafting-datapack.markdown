@@ -1,6 +1,13 @@
 ---
 title: NBTCrafter, another NBT crafting data pack
 layout: post
+links
+  -
+    url: http://www.binary1024.xyz/tools/recipe-generator.html
+    label: Recipe Generator
+  -
+    url: http://www.binary1024.xyz/assets/downloads/nbtcrafter_by_binary1024.zip
+    label: Download NBTCrafter
 ---
 
 ### {{ page.title }}
@@ -8,10 +15,6 @@ layout: post
 Yep, I made another NBT crafting data pack for Minecraft 1.16. But this is different from others because the **Fabricator** behaves just as a **Crafting Table** does. Also it has a custom enchantment system, called **Spells**, they are used with a **Spell Caster**. 
 
 The **Spell Caster** works similar to a **Enchanting Table** but you don't get to choose the spell you get, it is random but this randomness depends on how many spells are.
-
-#### How to make recipes
-
-Check the [generator](http://www.binary1024.xyz/tools/recipe-generator.html)
 
 #### How to use the Fabricator
 

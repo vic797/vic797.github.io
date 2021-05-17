@@ -19,6 +19,13 @@
                     </div>
                 </div>
                 <div class="col-md-9">
+                    {% if page.links %}
+                    <div class="d-grid gap-2 d-md-block mt-2 mb-2">
+                        {% for link in page.links %}
+                        <a href="{{ link.url }}" {% if link.target %}target="{{ link.target }}" {% endif %} {% if link.download %}download="download" {% endif %}class="btn btn-primary">{{ link.label }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     {{ content }}
                 </div>
             </div>

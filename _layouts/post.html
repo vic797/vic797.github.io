@@ -11,13 +11,12 @@
                 <div class="col-md-3">
                     <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
                     <h4>by binary1024 (aka me)</h4>
-                    <h4 class="mt-4">Posts</h4>
+                    <h4 class="mt-4">posts</h4>
                     <div class="list-group">
                         {% for post in site.posts %}
                         <a href="{{ post.url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
                         {% endfor %}
                     </div>
-                </div>
                 </div>
                 <div class="col-md-9">
                     {{ content }}

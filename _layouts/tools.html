@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include header.html %}
+        <title>{{ page.title }} @ {{ site.title }}</title>
+    </head>
+    <body>
+        <div class="container mt-2">
+            <h4><a href="../index.html">&lt;</a> {{ page.title }}</h4>
+            <p>{{ page.description }}</p>
+            <div class="tool-content">
+                {{ content }}
+            </div>
+        </div>
+    </body>
+</html>

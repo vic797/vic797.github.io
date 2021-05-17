@@ -1,0 +1,176 @@
+---
+title: Recipe Generator
+description: recipe generator for NBTCrafter
+visible: false
+layout: tools
+---
+<div class="row">
+    <div class="col-md-9">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="crafting-tab" data-bs-toggle="tab" data-bs-target="#crafting" type="button"
+                    role="tab" aria-controls="crafting" aria-selected="true">Crafting</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="spells-tab" data-bs-toggle="tab" data-bs-target="#spells" type="button" role="tab"
+                    aria-controls="spells" aria-selected="false">Spells</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="crafting" role="tabpanel" aria-labelledby="crafting-tab">
+                <div class="mb-3">
+                    <label for="recipe-function" class="form-label">Function name</label>
+                    <input type="text" class="form-control" id="recipe-function">
+                </div>
+                <div class="card mt-2">
+                    <div class="card-header">
+                        Crafting
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="3b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="4b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="5b" data-nbt=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="12b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="13b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="14b" data-nbt=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="21b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="22b" data-nbt=""></td>
+                                        <td><img data-recipe="recipe" data-id="minecraft:air" width="32" height="32" data-slot="23b" data-nbt=""></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-3">
+                                    <label for="item-id" class="form-label">ID</label>
+                                    <select class="form-control" data-live-search="true" id="item-id" data-slot="-1b" data-target="id">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="item-nbt" class="form-label">NBT</label>
+                                    <input type="text" class="form-control" id="item-nbt" data-slot="-1b" data-target="nbt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-header">
+                        Result
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="result-nbt" class="form-label">ID</label>
+                            <select class="form-control" data-live-search="true" id="result-id">
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="result-nbt" class="form-label">NBT</label>
+                            <input type="text" class="form-control" id="result-nbt">
+                        </div>
+                        <div class="mb-3">
+                            <label for="result-count" class="form-label">Count</label>
+                            <input type="number" class="form-control" id="result-count" data-slot="16b" data-target="count" min="1" max="64" value="1">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-block mt-2 mb-2">
+                    <button class="btn btn-success" type="button" id="save-crafting">Save</button>
+                    <button class="btn btn-warning" type="button" id="reset-crafting">Reset</button>
+                    <button class="btn btn-danger" type="button" id="delete-crafting">Delete</button>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="spells" role="tabpanel" aria-labelledby="spells-tab">
+                <div class="mb-3">
+                    <label for="spell-function" class="form-label">Function name</label>
+                    <input type="text" class="form-control" id="spell-function">
+                </div>
+                <div class="card mt-2">
+                    <div class="card-header">
+                        Spell
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="spell-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="spell-name" placeholder="Spell">
+                        </div>
+                        <div class="mb-3">
+                            <label for="spell-id" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="spell-id" aria-describedby="spell-help"
+                                placeholder="foo:bar">
+                            <div id="spell-help" class="form-text">Needed to check from commands</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="spell-level" class="form-label">Level</label>
+                            <input type="number" class="form-control" id="spell-level" max="64" min="1" value="1">
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-header">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="enable-trading">
+                            <label class="form-check-label" for="enable-trading">
+                                Trading
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="trade-cost" class="form-label">Cost (emeralds)</label>
+                            <input type="number" class="form-control" id="trade-cost" max="64" min="1" value="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trade-multiplier" class="form-label">Cost multiplier</label>
+                            <input type="number" class="form-control" id="trade-multiplier" min="0" max="1" step="0.01" value="0">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trade-xp" class="form-label">XP</label>
+                            <input type="number" class="form-control" id="trade-xp" max="128" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-block mt-2 mb-2">
+                    <button class="btn btn-success" type="button" id="save-spell">Save</button>
+                    <button class="btn btn-warning" type="button" id="reset-spell">Reset</button>
+                    <button class="btn btn-danger" type="button" id="delete-spell">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-success" role="alert">
+            Your recipes and spells are saved
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="namespace" class="form-label">Namespace</label>
+            <input type="text" class="form-control" id="namespace">
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Recipes
+            </div>
+            <ul class="list-group list-group-flush" id="recipe-list">
+            </ul>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header">
+                Spells
+            </div>
+            <ul class="list-group list-group-flush" id="spell-list">
+            </ul>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+            <button class="btn btn-success" type="button">Download</button>
+            <button class="btn btn-danger" type="button" id="delete-all">Delete all</button>
+        </div>
+    </div>
+</div>
+<script src="../assets/recipe-generator.js"></script>

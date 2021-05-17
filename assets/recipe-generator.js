@@ -1,6 +1,166 @@
 var ids = {}
 var selected = ""
 
+function getItems(pattern, ingredients) {
+    var out = []
+    var indexes = indexes = ["3b", "4b", "5b", "12b", "13b", "14b", "21b", "22b", "23b"]
+    var index = 0
+    for (var i = 0; i < pattern.length; i++) {
+        var k = pattern[i]
+        if (k !== " " && ingredients[k]) {
+            var ingredient = ingredients[k]
+            var slot = indexes[index]
+            var id = ingredient.id
+            if (ingredient.nbt) {
+                var nbt = ingredient.nbt.replace("\"", "\\\"")
+                out.push(`{Slot:${slot},id:\"${id}\",tag:${nbt}}`)
+            } else {
+                out.push(`{Slot:${slot},id:\"${id}\"}`)
+            }
+        }
+        index++
+    }
+    return out.join(",")
+}
+
+function generateBook(pattern, ingredients) {
+    var out = {}
+    var indexes = indexes = ["3b", "4b", "5b", "12b", "13b", "14b", "21b", "22b", "23b"]
+    var index = 0
+    for (var i = 0; i < pattern.length; i++) {
+        var k = pattern[i]
+        if (k !== " " && ingredients[k]) {
+            var ingredient = ingredients[k]
+            var slot = indexes[index]
+            out[slot] = ingredient.id
+        }
+        index++
+    }
+    return out
+}
+
+function generateFunctions(target) {
+    var url = $("meta[name=tools-host]").attr("content")
+    var recipes = localStorage.getItem("recipes")
+    if (recipes) {
+        var entries = JSON.parse(recipes)
+        var rdir = target.folder("recipes")
+        var rbdir = target.folder("recipe_book")
+        Object.keys(entries).forEach(function (value) {
+            var recipe = entries[value]
+            var items = getItems(recipe.pattern, recipe.ingredients)
+            if (recipe.result.nbt === undefined) {
+                recipe.result.nbt = "{}"
+            }
+            var id = recipe.result.id
+            var nbt = recipe.result.nbt
+            var count = 1
+            if (recipe.result.count) {
+                count = parseInt(recipe.result.count)
+            }
+            var line0 = `execute unless score @s NBTC_Craft matches 1 store success score @s NBTC_Craft run execute if data block ~ ~ ~ {Items:[${items}]}`
+            var line1 = `execute if data block ~ ~ ~ {Items:[${items}]} if score @s NBTC_Craft matches 1 run data modify block ~ ~ ~ Items append value {Slot:16b,id:\"${id}\",Count:${count}b,tag:${nbt}}`
+            rdir.file(value + ".mcfunction", `${line0}\n${line1}\n`)
+
+            var book = {
+                items: generateBook(recipe.pattern, recipe.ingredients),
+                name: recipe.result.name
+            }
+            var burl = encodeURI(JSON.stringify(book))
+            var tell = `tellraw @s ["",{"text":"${recipe.result.name}","color":"yellow"},{"text":" "},{"text":"[View]","color":"green","clickEvent":{"action":"open_url","value":"${url}/tools/recipe-viewer.html#${burl}"}}]`
+            rbdir.file(value + ".mcfunction", `${tell}\n`)
+        })
+    }
+    var spells = localStorage.getItem("spells")
+    if (spells) {
+        var entries = JSON.parse(spells)
+        var spellsd = target.folder("spells")
+        var trading = target.folder("trading")
+        Object.keys(entries).forEach(function (value) {
+            var spell = entries[value]
+            var name = spell.spell.name.replace("\"", "\\\"")
+            var id = spell.spell.id
+            var level = spell.spell.level
+            var lines = `execute if score $RandFlag NBTC_Random matches 1 unless score $SkipNext NBTC_Random matches 1 run data modify block ~ ~ ~ Items append value {Count:1b,Slot:5b,id:\"minecraft:paper\",tag:{Enchantments:[{id:\"nbtcrafter:spell\",lvl:1}],display:{Name:\"{\\\"translate\\\":\\\"item.nbtcrafter.spell\\\"}\",Lore:[\"{\\\"text\\\":\\\"\\\"}\",\"{\\\"text\\\":\\\"${name}\\\"}\"]},Spell:{id:\"${id}\",lvl:${level}b},SpellSource:1b,SpellBroken:0b}}\n`
+            lines += "execute if score $RandFlag NBTC_Random matches 1 run scoreboard players set $SkipNext NBTC_Random 1\n"
+            lines += "execute if score $RandFlag NBTC_Random matches 0 run function nbtcrafter:misc/random_flag\n"
+            spellsd.file(value + ".mcfunction", lines)
+            if (spell.trading) {
+                var cost = spell.trading.cost
+                var multiplier = parseFloat(spell.trading.multiplier)
+                var xp = spell.trading.xp
+                var t = `execute if score $RandFlag NBTC_Random matches 1 unless score $SkipNext NBTC_Random matches 1 run data modify entity @s Offers.Recipes append value {buy:{id:\"minecraft:emerald\",Count:${cost}b,maxUses:8b},buyB:{id:\"minecraft:paper\",Count:1b},sell:{Count:1b,id:\"minecraft:paper\",tag:{Enchantments:[{id:\"nbtcrafter:spell\",lvl:1}],display:{Name:\"{\\\"translate\\\":\\\"item.nbtcrafter.spell\\\"}\",Lore:[\"{\\\"text\\\":\\\"\\\"}\",\"{\\\"text\\\":\\\"${name}\\\"}\"]},Spell:{id:\"${id}\",lvl:${level}b},SpellSource:1b,SpellBroken:0b},priceMultiplier:${multiplier}f,xp:${xp}}}\n`
+                t += "execute if score $RandFlag NBTC_Random matches 1 run scoreboard players set $SkipNext NBTC_Random 1\n"
+                t += "execute if score $RandFlag NBTC_Random matches 0 run function nbtcrafter:misc/random_flag\n"
+                trading.file(value + ".mcfunction", t)
+            }
+        })
+    }
+}
+
+function generateTags(target) {
+    var ns = localStorage.getItem("namespace")
+    var recipes = localStorage.getItem("recipes")
+    if (recipes) {
+        var entries = JSON.parse(recipes)
+        var values = {
+            values: []
+        }
+        var book = {
+            values: []
+        }
+        Object.keys(entries).forEach(function (value) {
+            values.values.push(`${ns}:recipes/recipes/${value}`)
+            book.values.push(`${ns}:recipes/recipe_book/${value}`)
+        })
+        target.file("crafting.json", JSON.stringify(values, null, 4))
+        target.file("recipe_book.json", JSON.stringify(book, null, 4))
+    }
+    var spells = localStorage.getItem("spells")
+    if (spells) {
+        var entries = JSON.parse(spells)
+        var spellList = {
+            values: []
+        }
+        var tradingList = {
+            values: []
+        }
+        Object.keys(entries).forEach(function (value) {
+            spellList.values.push(`${ns}:recipes/spells/${value}`)
+            var t = entries[value]
+            if (t.trading) {
+                tradingList.values.push(`${ns}:recipes/trading/${value}`)
+            }
+        })
+        target.file("spells.json", JSON.stringify(spellList, null, 4))
+        target.file("spell_trade.json", JSON.stringify(tradingList, null, 4))
+    }
+}
+
+function generateDataPack() {
+    var zip = new JSZip()
+    zip.file("pack.mcmeta", JSON.stringify({
+        pack: {
+            pack_format: 6,
+            description: "NBT Recipes"
+        }
+    }, null, 4))
+    var data = zip.folder("data")
+    var ns = data.folder(localStorage.getItem("namespace"))
+    var functions = ns.folder("functions").folder("recipes")
+    generateFunctions(functions)
+    var tags = data.folder("nbtcrafter").folder("tags").folder("functions")
+    generateTags(tags)
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+        // see FileSaver.js
+        var ns = localStorage.getItem("namespace")
+        var d = new Date();
+        var n = d.getTime();
+        saveAs(content, `${ns}-recipes-${n}.zip`);
+    });
+}
+
 function scrollToTop() {
     document.scrollToTop()
 }
@@ -30,6 +190,7 @@ function showRecipe(key, storageKey) {
                 $("#recipe-function").val(key)
                 $("#item-id").val("").data("slot", "-1b")
                 $("#item-nbt").val("").data("slot", "-1b")
+                $("#result-book").val(recipe.result.name)
                 $("#result-id").val(recipe.result.id).selectpicker('val', recipe.result.id)
                 $("#result-nbt").val(recipe.result.nbt)
                 $("#result-count").val(recipe.result.count)
@@ -90,6 +251,7 @@ function reloadSpells() {
 }
 
 function resetCrafting() {
+    $("#result-book").val("")
     $("#recipe-function").val("")
     $("#item-nbt").val("").data("slot", "-1b")
     $("#item-id").val("minecraft:air").selectpicker('val', "minecraft:air").data("slot", "-1b")
@@ -199,7 +361,8 @@ $(document).ready(function() {
             result: {
                 id: $("#result-id").val(),
                 nbt: $("#result-nbt").val(),
-                count: $("#result-count").val()
+                count: $("#result-count").val(),
+                name: $("#result-book").val()
             }
         }
         $("[data-recipe]").each(function(index, value) {
@@ -272,6 +435,9 @@ $(document).ready(function() {
             localStorage.removeItem("namespace")
             location.reload()
         }
+    })
+    $("#download-pack").click(function(e) {
+        generateDataPack()
     })
     reloadRecipes()
     reloadSpells()

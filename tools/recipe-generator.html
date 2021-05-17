@@ -1,9 +1,10 @@
 ---
 title: Recipe Generator
 description: recipe generator for NBTCrafter
-visible: false
+visible: true
 layout: tools
 ---
+<a name="top"></a>
 <div class="row">
     <div class="col-md-9">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -66,6 +67,10 @@ layout: tools
                         Result
                     </div>
                     <div class="card-body">
+                        <div class="mb-3">
+                            <label for="result-book" class="form-label">Recipe book name:</label>
+                            <input type="text" class="form-control" id="result-book">
+                        </div>
                         <div class="mb-3">
                             <label for="result-nbt" class="form-label">ID</label>
                             <select class="form-control" data-live-search="true" id="result-id">
@@ -168,9 +173,11 @@ layout: tools
             </ul>
         </div>
         <div class="d-grid gap-2 mt-3">
-            <button class="btn btn-success" type="button">Download</button>
+            <button class="btn btn-success" type="button" id="download-pack">Download</button>
             <button class="btn btn-danger" type="button" id="delete-all">Delete all</button>
         </div>
     </div>
 </div>
+<script src="../assets/FileSaver.min.js"></script>
+<script src="../assets/jszip.min.js"></script>
 <script src="../assets/recipe-generator.js"></script>

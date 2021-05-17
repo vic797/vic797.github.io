@@ -17,7 +17,6 @@
                         <a href="{{ post.url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
                         {% endfor %}
                     </div>
-                    <img src="{{ site.url }}assets/by-nc-sa.png" class="mt-2">
                 </div>
                 <div class="col-md-9">
                     {% if page.links %}
@@ -28,6 +27,7 @@
                     </div>
                     {% endif %}
                     {{ content }}
+                    <img src="{{ site.url }}assets/by-nc-sa.png" class="mt-2" width="88" height="31">
                 </div>
             </div>
         </div>

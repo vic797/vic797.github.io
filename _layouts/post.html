@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include header.html %}
+        <title>{{ page.title }} @ {{ site.title }}</title>
+    </head>
+    <body>
+        <div class="container mt-2">
+            <h4><a href="{{ site.url }}" class="btn btn-primary">&lt;</a> {{ page.title }}</h4>
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
+                    <h4>by binary1024 (aka me)</h4>
+                </div>
+                <div class="col-md-10">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -35,6 +35,12 @@
                     </dl>
                     <br>
                     <h4 id="word">...</h4>
+                    <h4>Posts</h4>
+                    <div class="list-group">
+                        {% for post in site.posts %}
+                        <a href="{{ post.url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h4>stuff i made</h4>

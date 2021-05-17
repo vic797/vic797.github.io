@@ -9,6 +9,10 @@ Yep, I made another NBT crafting data pack for Minecraft 1.16. But this is diffe
 
 The **Spell Caster** works similar to a **Enchanting Table** but you don't get to choose the spell you get, it is random but this randomness depends on how many spells are.
 
+#### How to make recipes
+
+Check the [generator](http://www.binary1024.xyz/tools/recipe-generator.html)
+
 #### How to use the Fabricator
 
 Use it as a regular **Crafting Table**, just don't leave anything in there, I still have to work on that.

@@ -3,25 +3,11 @@
     <head>
         {% include header.html %}
         <title>{{ site.title }}</title>
-        <script>
-            $(function() {
-                $("#stuff-search").on("keyup", function(e) {
-                    var query = $(e.target).val().toLowerCase()
-                    $("[data-search]").each(function(index, value) {
-                        var term = $(value).data("search").toLowerCase()
-                        if (term.includes(query)) {
-                            $(value).show()
-                        } else {
-                            $(value).hide()
-                        }
-                    })
-                })
-            })
-        </script>
     </head>
     <body>
-        <div class="container mt-2">
-            <div class="row">
+        <div class="container">
+            {% include navbar.html %}
+            <div class="row mt-2">
                 <div class="col-md-6">
                     <h4>binary1024 (me)</h4>
                     <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
@@ -35,36 +21,32 @@
                     </dl>
                     <br>
                     <h4 id="word">...</h4>
-                    <h4 class="mt-4">posts</h4>
-                    <div class="list-group">
-                        {% for post in site.posts %}
-                        <a href="{{ post.url }}" class="list-group-item list-group-item-action">{{ post.title }}</a>
-                        {% endfor %}
-                    </div>
                 </div>
                 <div class="col-md-6">
                     <h4>stuff i made</h4>
-                    <div class="mb-2 mt-3">
-                        <input type="text" class="form-control" placeholder="search" id="stuff-search">
-                    </div>
                     <div class="list-group pt-3">
-                        {% for page in site.pages %}
-                        {% if page.visible %}
-                        <a href="{{ page.url }}" class="list-group-item list-group-item-action" data-search="{{ page.name }}">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{ page.title }}</h5>
-                            </div>
-                            <p class="mb-1">{{ page.description }}</p>
-                        </a>
-                        {% endif %}
-                        {% endfor %}
                         {% for page in site.data.pages %}
-                        <a href="{{ page.link }}" class="list-group-item list-group-item-action" target="_blank" data-search="{{ page.name }}">
+                        <a href="{{ page.link }}" class="list-group-item list-group-item-action" target="_blank">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{ page.name }}</h5>
                             </div>
                             <p class="mb-1">{{ page.description }}</p>
                         </a>
+                        {% endfor %}
+                    </div>
+                    <h4 class="mt-4">posts</h4>
+                    <div class="list-group">
+                        {% for post in site.posts %}
+                        {% if post.description %}
+                        <a href="{{ post.url }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ post.title }}</h5>
+                            </div>
+                            <p class="mb-1">{{ post.description }}</p>
+                        </a>
+                        {% else %}
+                        <a href="{{ post.url }}" class="list-group-item list-group-item-action"><h5>{{ post.title }}</h5></a>
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>

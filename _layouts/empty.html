@@ -5,8 +5,9 @@
         <title>{{ page.title }} @ {{ site.title }}</title>
     </head>
     <body>
-        <div class="container mt-2">
-            <h4><a href="{{ site.url }}" class="btn btn-primary">&lt;</a> {{ page.title }}</h4>
+        <div class="container">
+            {% include navbar.html %}
+            <h4 class="mt-2">{{ page.title }}</h4>
             <p>{{ page.description }}</p>
             {{ content }}
         </div>

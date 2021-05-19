@@ -267,6 +267,17 @@ function resetCrafting() {
     })
 }
 
+function backupRecipes() {
+    var result = {}
+    result.namespace = localStorage.getItem("namespace")
+    result.recipes = JSON.parse(localStorage.getItem("recipes"))
+    result.spells = JSON.parse(localStorage.getItem("spells"))
+    var blob = new Blob([JSON.stringify(result, null, 4)], {type: "text/plain;charset=utf-8"});
+    var d = new Date();
+    var n = d.getTime();
+    saveAs(blob, `${result.namespace}-${n}.json`);
+}
+
 function resetSpell() {
     $("#spell-function").val("")
     $("#spell-name").val("")
@@ -438,6 +449,74 @@ $(document).ready(function() {
     })
     $("#download-pack").click(function(e) {
         generateDataPack()
+    })
+    $("#backup-recipes").click(function(e) {
+        backupRecipes()
+    })
+    if (typeof window.FileReader !== 'function') {
+        $("#restore-action").attr("disabled", "disabled")
+    }
+    $("#restore-recipes").click(function() {
+        var file = document.getElementById("file-selector").files[0]
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            var data = JSON.parse(reader.result)
+            var storedSpells = localStorage.getItem("spells")
+            var spells = {}
+            if (storedSpells !== undefined) {
+                spells = JSON.parse(storedSpells)
+            }
+            if (spells === undefined || spells === null) {
+                spells = {}
+            }
+            var storedRecipes = localStorage.getItem("recipes")
+            var recipes = {}
+            if (storedRecipes !== undefined) {
+                recipes = JSON.parse(storedRecipes)
+            }
+            if (recipes === undefined || recipes === null) {
+                recipes = {}
+            }
+            if ($("#override-namespace").prop("checked") && data.namespace !== undefined && localStorage.getItem("namespace") === undefined) {
+                localStorage.setItem("namespace", data.namespace)
+            }
+            if (data.spells !== undefined) {
+                var overrideSpells = $("#override-spells").prop("checked")
+                Object.keys(data.spells).forEach(function(val) {
+                    if (spells[val] !== undefined) {
+                        if (overrideSpells) {
+                            spells[val] = data.spells[val]
+                        }
+                    } else {
+                        spells[val] = data.spells[val]
+                    }
+                })
+            }
+            localStorage.setItem("spells", JSON.stringify(spells))
+            if (data.recipes !== undefined) {
+                var overrideRecipes = $("#override-recipes").prop("checked")
+                Object.keys(data.recipes).forEach(function(val) {
+                    if (recipes[val] !== undefined) {
+                        if (overrideRecipes) {
+                            recipes[val] = data.recipes[val]
+                        }
+                    } else {
+                        recipes[val] = data.recipes[val]
+                    }
+                })
+            }
+            localStorage.setItem("recipes", JSON.stringify(recipes))
+            location.reload()
+        }
+        reader.onloadstart = function(e) {
+            var modal = new bootstrap.Modal($("#restore-progress-modal"))
+            modal.show()
+        }
+        reader.onprogress = function(e) {
+            var p = Math.round((e.loaded * e.total) / 100)
+            $("#restore-progress").attr("aria-valuenow", p).css("width", `${p}%`)
+        }
+        reader.readAsText(file, "utf-8")
     })
     reloadRecipes()
     reloadSpells()

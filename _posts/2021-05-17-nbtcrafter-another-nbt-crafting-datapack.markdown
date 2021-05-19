@@ -6,8 +6,11 @@ links:
     url: http://www.binary1024.xyz/tools/recipe-generator.html
     label: Recipe Generator
   -
-    url: http://www.binary1024.xyz/assets/downloads/nbtcrafter_by_binary1024.zip
+    url: http://www.binary1024.xyz/assets/downloads/nbtcrafter_by_binary1024_1.1.zip
     label: Download NBTCrafter
+  -
+    url: http://www.binary1024.xyz/assets/downloads/nbtcrafter_resources_by_binary1024.zip
+    label: Download Resource Pack
 ---
 
 ### {{ page.title }}

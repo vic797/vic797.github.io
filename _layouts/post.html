@@ -8,6 +8,10 @@
         <div class="container mb-4">
             {% include navbar.html %}
             <div class="row mt-2">
+                <div class="col-md-9">
+                    {{ content }}
+                    <img src="{{ site.url }}assets/by-nc-sa.png" class="mt-2" width="88" height="31">
+                </div>
                 <div class="col-md-3">
                     <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
                     <h4>by binary1024 (aka me)</h4>
@@ -16,17 +20,14 @@
                         <dd><a href=" {{link.link }}" target="_blank">{{ link.name }}</a></dd>
                         {% endfor %}
                     </dl>
-                </div>
-                <div class="col-md-9">
-                    {{ content }}
                     {% if page.links %}
-                    <div class="d-grid gap-2 d-md-block mt-2 mb-2">
+                    <h6>from this post</h6>
+                    <div class="d-grid gap-2 mt-2 mb-2">
                         {% for link in page.links %}
                         <a href="{{ link.url }}" {% if link.target %}target="{{ link.target }}" {% endif %} {% if link.download %}download="download" {% endif %}class="btn btn-primary">{{ link.label }}</a>
                         {% endfor %}
                     </div>
                     {% endif %}
-                    <img src="{{ site.url }}assets/by-nc-sa.png" class="mt-2" width="88" height="31">
                 </div>
             </div>
         </div>

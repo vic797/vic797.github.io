@@ -13,13 +13,6 @@
                     <img src="{{ site.url }}assets/by-nc-sa.png" class="mt-2" width="88" height="31">
                 </div>
                 <div class="col-md-3">
-                    <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
-                    <h4>by binary1024 (aka me)</h4>
-                    <dl>
-                        {% for link in site.data.links %}
-                        <dd><a href=" {{link.link }}" target="_blank">{{ link.name }}</a></dd>
-                        {% endfor %}
-                    </dl>
                     {% if page.links %}
                     <h6>from this post</h6>
                     <div class="d-grid gap-2 mt-2 mb-2">
@@ -28,6 +21,13 @@
                         {% endfor %}
                     </div>
                     {% endif %}
+                    <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&overlay" alt="my head should be here" title="my head">
+                    <h4>by binary1024 (aka me)</h4>
+                    <dl>
+                        {% for link in site.data.links %}
+                        <dd><a href=" {{link.link }}" target="_blank">{{ link.name }}</a></dd>
+                        {% endfor %}
+                    </dl>
                 </div>
             </div>
         </div>

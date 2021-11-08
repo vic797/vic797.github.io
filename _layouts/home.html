@@ -6,6 +6,41 @@
     </head>
     <body>
         <div class="container">
+            <div class="avatar-center">
+                <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=64&amp;overlay" alt="my head should be here" title="my head">
+            </div>
+            <h1 class="header-text">binary1024</h1>
+            <p>{{ site.description }}</p>
+            <ul class="link-list">
+                <li><a href="https://www.reddit.com/u/binary512">u/binary512</a></li>
+                <li><a href="https://www.github.com/vic797">Github</a></li>
+                <li><a href="https://www.planetminecraft.com/member/binary1024/">Planet Minecraft</a></li>
+            </ul>
+            <br><br>
+            {% for link in site.data.links %}
+            <div class="media-item">
+                <h3>{{ link.title }}</h3>
+                <p>{{ link.description }}</p>
+                <br>
+                {% for url in link %}
+                <a href="{{ url.url }}" class="media-link">{{ url.text }}</a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <br><br>
+            <div class="unsplash-banner">
+                Photo by <a href="https://unsplash.com/@theshubhamdhage?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shubham Dhage</a> on <a href="https://unsplash.com/s/photos/minecraft?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="container">
             {% include navbar.html %}
             <div class="row mt-2">
                 <div class="col-md-6">

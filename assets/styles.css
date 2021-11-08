@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(./background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: #333333;
+}
+
+a {
+    color: #129c9c;;
+}
+
+.container {
+    color: #f3f3f3;
+    width: 75%;
+    margin: auto;
+    position: relative;
+    padding: 8px;
+}
+
+.content {
+    flex-grow: 1;
+    max-width: 50%;
+}
+
+.unsplash-banner {
+    font-size: 12px;
+    position: relative;
+    width: fit-content;
+    margin: 32px auto 0px auto;
+}
+
+.avatar-center {
+    width: fit-content;
+    margin: auto;
+}
+
+.header-text {
+    margin-top: 2em;
+    text-align: center;
+    font-family: 'Press Start 2P',cursive;
+}
+
+.link-list {
+    list-style-type: none;
+    margin: 32px auto 0px auto;
+    padding: 0;
+    position: relative;
+    width: fit-content;
+}
+
+.link-list li {
+    display: inline;
+}
+
+.link-list a, .media-link {
+    color: #f3f3f3;
+    border: 1px solid #f3f3f3;
+    background: none;
+    text-decoration: none;
+    padding: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.link-list a:hover, .media-link:hover {
+    background-color: #129c9c;
+    transition: background-color 0.3s ease;
+}
+
+.media-item + .media-item{
+    border-bottom: 1px solid #f3f3f3;
+}

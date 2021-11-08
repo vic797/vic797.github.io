@@ -21,7 +21,8 @@
 title: binary1024
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  i do stuff, sometimes good, sometimes bad, but i have fun
+  I'm a programmer, a totally responsible adult, a minecrafter, a datapacker and a full time idiot. 
+  Down here is a list of some programs and data packs I have made. There are also some links that you can check out.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.binary1024.xyz/" # the base hostname & protocol for your site, e.g. http://example.com
 

@@ -1,9 +1,31 @@
-- name: github
-  link: https://github.com/vic797
+-
+  title: Commands Core
+  description: This is the core data pack for some of my upcoming data packs.
+  links:
+    -
+      url: https://www.planetminecraft.com/data-pack/binary-s-commands-core/
+      text: Post
 
-- name: planet minecraft
-  link: https://www.planetminecraft.com/member/binary1024/
+-
+  title: NBTCrafter | NBT Crafting Data Pack
+  description: Yep, I made another NBT crafting data pack for Minecraft 1.16. But this is different from others because the Fabricator behaves just as a Crafting Table does. Also it has a custom enchantment system, called Spells, they are used with a Spell Caster.
+  links: 
+    - 
+      url: https://www.planetminecraft.com/data-pack/nbtcrafter-nbt-crafting-data-pack/
+      text: Post
 
-- name: u/binary512
-  link: https://www.reddit.com/u/binary512
-  
+-
+  title: Cube Creator | v0.1 Alpha
+  description: Cube Creator is an IDE meant for data packs and resource packs for Minecraft Java Edition.
+  links:
+    -
+      url: https://github.com/vic797/cube-creator
+      text: Github
+
+-
+  title: Futuristic UI [1.12, 1.14, 1.15, 1.16]
+  description: This is a Futuristic GUI for Minecraft. Every GUI element is inspired by some kind of cyberpunk style.
+  links: 
+    - 
+      url: https://www.planetminecraft.com/texture-pack/futuristic-ui/
+      text: Post

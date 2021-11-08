@@ -10,12 +10,12 @@ layout: empty
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead>
-            <tr><th>Name</th><th>Date</th><th>Download</th></tr>
+            <tr><th>Name</th><th>Download</th></tr>
         </thead>
         <tbody>
             {% for file in site.static_files %}
             {% if file.path contains 'downloads' %}
-            <tr><td><span class="color-coded" data-search>{{ file.basename }}</span></td><td>{{ file.modified_time | date: '%B %d, %Y' }}</td><td><a href="{% if site.url != "" %}{{ site.url }}{% else %}.{% endif %}{{ file.path }}" class="btn btn-primary" download>Download</a></td></tr>
+            <tr><td><span class="color-coded" data-search>{{ file.basename }}</span></td><td><a href="{% if site.url != "" %}{{ site.url }}{% else %}.{% endif %}{{ file.path }}" class="btn btn-primary" download>Download</a></td></tr>
             {% endif %}
             {% endfor %}
         </tbody>

@@ -1,0 +1,140 @@
+
+.dice {
+    position: relative;
+    border: none;
+    background: none;
+    font-family: 'Oxygen', sans-serif;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.dice + .dice {
+    margin-left: 8px;
+}
+
+button.dice, a.dice {
+    cursor: pointer;
+}
+
+.dice-ui {
+    display: flex;
+    flex-direction: column;
+}
+
+.dice-ui-up, .dice-ui-down, .dice-ui-input {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+.dice-rolls {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    margin-top: 16px;
+    padding: 16px;
+}
+
+.dice-label {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+}
+
+.hiden {
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.hiden.show {
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
+.dice-sum {
+    font-size: 50px;
+    text-align: center;
+    padding: 16px;
+}
+
+.dice-result-modifier {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 50px;
+    width: 100px;
+    font-weight: 300;
+}
+
+.dice-modifier {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 18px;
+}
+
+.dice-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: 128px;
+    position: relative;
+}
+
+.dice-custom {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid lightgray;
+    padding: 8px;
+}
+
+.dice-custom-label {
+    padding: 4px;
+    margin: auto;
+}
+
+.dice-custom-input {
+    border: 1px solid lightgray;
+    padding: 4px;
+    flex-grow: 1;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 16px;
+}
+
+.dice-custom-roll {
+    color: #259ee4;
+    background: none;
+    border: none;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 4px;
+    border: 1px solid lightgray;
+    transition: border-color 300ms ease;
+}
+
+.dice-custom-roll:hover {
+    border-color: #259ee4;
+    transition: border-color 300ms ease;
+}
+
+@media screen and (max-width: 768px) {
+    .dice-custom {
+        flex-direction: column;
+    }
+
+    .dice-custom-label {
+        flex-grow: 1;
+    }
+
+    .dice-custom-roll {
+        margin-left: 0;
+    }
+
+    .dice-custom-input {
+        margin: 8px 0px;
+    }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>binary1024's Dice Roller</title>
+        <meta name="description" content="A minimal virtual dice roller for table-top games. Roll from a d4 to a d100 and even flip a coin or roll a custom die">
+        <meta name="keywords" content="table, tabletop, table-top, dice, die, roll, roller">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=16&overlay">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet"> 
+        <link href="./styles.css" rel="stylesheet">
+        <link href="./dice.css" rel="stylesheet">
+        <script src="./dice.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Dice Roller</h1>
+            <p>Click to roll.</p>
+            <div class="flex-list">
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d2</span>
+                    <button class="dice" data-rolls="d2" id="dice-d2">
+                        <canvas class="dice-display" width="48" height="48" data-color="#95a5a6" data-faces="2"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d2">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d4</span>
+                    <button class="dice" data-rolls="d4" id="dice-d4">
+                        <canvas class="dice-display" width="48" height="48" data-color="#1abc9c" data-faces="4"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d4">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d6</span>
+                    <button class="dice" data-rolls="d6" id="dice-d6">
+                        <canvas class="dice-display" width="48" height="48" data-color="#2ecc71" data-faces="6"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d6">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d8</span>
+                    <button class="dice" data-rolls="d8" id="dice-d8">
+                        <canvas class="dice-display" width="48" height="48" data-color="#f1c40f" data-faces="8"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d8">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d10</span>
+                    <button class="dice" data-rolls="d10" id="dice-d10">
+                        <canvas class="dice-display" width="48" height="48" data-color="#9b59b6" data-faces="10"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d10">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d12</span>
+                    <button class="dice" data-rolls="d12" id="dice-d12">
+                        <canvas class="dice-display" width="48" height="48" data-color="#e67e22" data-faces="12"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d12">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d20</span>
+                    <button class="dice" data-rolls="d20" id="dice-d20">
+                        <canvas class="dice-display" width="48" height="48" data-color="#e74c3c" data-faces="20"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d20">
+                </div>
+                <span class="spacer"></span>
+                <div class="dice-wrapper">
+                    <span class="dice-label">d100</span>
+                    <button class="dice" data-rolls="d100" id="dice-d100">
+                        <canvas class="dice-display" width="48" height="48" data-color="#34495e" data-faces="10"></canvas>
+                    </button>
+                    <input type="number" class="dice-modifier" style="width: 48px;" min="-500" max="500" value="0" data-modifier-for="#dice-d100">
+                </div>
+                <span class="spacer"></span>
+            </div>
+            <div class="dice-custom">
+                <label for="dice-custom" class="dice-custom-label">Custom: </label>
+                <input type="text" class="dice-custom-input" name="dice-custom" id="dice-custom" placeholder="2d20+3">
+                <button class="dice-custom-roll" id="custom-roll">Roll</button>
+            </div>
+            <h2>Your Rolls</h2>
+            <p>Click to remove.</p>
+            <div class="dice-rolls" id="output">
+                <button class="dice" id="clear">
+                    <img src="https://img.icons8.com/color/48/000000/clear-symbol--v1.png"/>
+                    <span class="dice-label">Clear</span>
+                </button>
+            </div>
+            <div class="dice-sum" id="total">0</div>
+        </div>
+    </body>
+</html>

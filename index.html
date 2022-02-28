@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>binary1024</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=16&overlay">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet"> 
+        <link href="./styles.css" rel="stylesheet">
+        <script>
+            window.addEventListener("load", function() {
+                fetch("./links.json").then(function(response) {
+                    return response.json();
+                }).then(function(links) {
+                    var target = document.getElementById("things");
+                    links.links.forEach(function(link) {
+                        var item = document.createElement("div");
+                        item.classList.add("item-entry");
+                        var title = document.createElement("span");
+                        title.classList.add("item-title");
+                        title.appendChild(document.createTextNode(link.title));
+                        var p = document.createElement("p");
+                        p.appendChild(document.createTextNode(link.description));
+                        var ul = document.createElement("ul");
+                        link.links.forEach(function(l) {
+                            var a = document.createElement("a");
+                            a.href = l.url;
+                            a.appendChild(document.createTextNode(l.text));
+                            a.target = "_blank";
+                            var li = document.createElement("li");
+                            li.appendChild(a);
+                            ul.appendChild(li);
+                        });
+                        item.appendChild(title);
+                        item.appendChild(p);
+                        item.appendChild(ul);
+                        target.appendChild(item);
+                    });
+                    document.getElementById("things-loader").remove();
+                });
+                document.querySelectorAll("[data-disabled]").forEach(function(e) {
+                    e.addEventListener("click", function(evt) {
+                        evt.preventDefault();
+                        alert(e.getAttribute("data-disabled"));
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="information">
+                <a href="./index.html" data-noref class="avatar">
+                    <img src="https://crafatar.com/renders/head/1d06f8d6a27543b9abb5ad96a850f79c?size=128&amp;overlay" alt="Avatar">
+                </a>
+                <div class="description">
+                    <h1>binary1024</h1>
+                    <p>I'm a programmer, a totally responsible adult, a minecrafter, a datapacker and a full time idiot. Down here is a list of some programs and data packs for Minecraft I have made. There are also some links that you can check out.</p>
+                    <p>This is my personal website and I don't take it too serious. I'm just using it to collect and show what I do.</p>
+                </div>
+            </div>
+            <div class="button-row">
+                <span class="spacer"></span>
+                <a href="https://www.github.com/vic797" target="_blank" data-noref data-title="Github" class="tooltip tooltip-bottom"><img src="https://img.icons8.com/color/48/000000/github--v1.png"/></a>
+                <span class="spacer"></span>
+                <a href="https://www.planetminecraft.com/member/binary1024/" target="_blank" data-noref data-title="Planet Minecraft" class="tooltip tooltip-bottom"><img src="https://img.icons8.com/color/48/000000/earth-planet.png"/></a>
+                <span class="spacer"></span>
+                <a href="#" target="_blank" data-disabled="Wait a bit for my Instagram!" data-noref data-title="Instagram" class="tooltip tooltip-bottom"><img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png"/></a>
+                <span class="spacer"></span>
+                <a href="#" target="_blank" data-disabled="My Twitter is not ready" data-noref data-title="Twitter" class="tooltip tooltip-bottom"><img src="https://img.icons8.com/color/48/000000/twitter-circled--v1.png"/></a>
+                <span class="spacer"></span>
+                <a href="#" target="_blank" data-disabled="I will post on TikTok, I promise!" data-noref data-title="TikTok" class="tooltip tooltip-bottom"><img src="https://img.icons8.com/color/48/000000/tiktok--v1.png"/></a>
+                <span class="spacer"></span>
+            </div>
+            <h2>Things I do</h2>
+            <div class="item-list" id="things">
+            </div>
+            <div class="loader" id="things-loader"></div>
+            <div class="footer">All icons by <a href="https://icons8.com/" target="_blank">Icons8</a></div>
+        </div>
+    </body>
+</html>

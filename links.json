@@ -1,0 +1,94 @@
+{
+    "links": [
+        {
+            "title": "Dice Roller",
+            "description": "A very minimal dice roller for tabletop games",
+            "links": [
+                {
+                    "url": "./dice.html",
+                    "text": "Check it out!"
+                }
+            ]
+        },
+        {
+            "title": "Light | Part of the Commands Series",
+            "description": "This data pack provides a light metter to the player.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/light-part-of-the-commands-series/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "Way-points | Part of the Commands Series",
+            "description": "This pack provides way-points to any survival single or multiplayer. This locations are shared with every player on servers. With some other data packs on this series any player can teleport to any way-point with a single command.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/way-points-part-of-the-commands-series/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "Telerports | Library | Part of the Commands Serie",
+            "description": "This is a module for Commands Core that provides teleporting capabilities to other data packs from this same series using scoreboards.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/telerports-library-part-of-the-commands-series/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "GPS | Part of the Commands Series",
+            "description": "This is yet another coordinates HUD but it also provides functionalities to some of the next data packs.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/binary-s-gps/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "Commands Core",
+            "description": "This is the core data pack for some of my upcoming data packs.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/binary-s-commands-core/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "NBTCrafter | NBT Crafting Data Pack",
+            "description": "Yep, I made another NBT crafting data pack for Minecraft 1.16. But this is different from others because the Fabricator behaves just as a Crafting Table does. Also it has a custom enchantment system, called Spells, they are used with a Spell Caster.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/data-pack/nbtcrafter-nbt-crafting-data-pack/",
+                    "text": "Post"
+                }
+            ]
+        },
+        {
+            "title": "Cube Creator | v0.1 Alpha",
+            "description": "Cube Creator is an IDE meant for data packs and resource packs for Minecraft Java Edition.",
+            "links": [
+                {
+                    "url": "https://github.com/vic797/cube-creator",
+                    "text": "Github"
+                }
+            ]
+        },
+        {
+            "title": "Futuristic UI [1.12, 1.14, 1.15, 1.16]",
+            "description": "This is a Futuristic GUI for Minecraft. Every GUI element is inspired by some kind of cyberpunk style.",
+            "links": [
+                {
+                    "url": "https://www.planetminecraft.com/texture-pack/futuristic-ui/",
+                    "text": "Post"
+                }
+            ]
+        }
+    ]
+}
